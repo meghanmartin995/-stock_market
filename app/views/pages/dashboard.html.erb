@@ -1,0 +1,11 @@
+<ul>
+<% @stocks.each do |stock| %>
+  <li> <strong><%= stock.ticker %> </strong>
+  <%  @stock = StockQuote::Stock.quote(stock.ticker) %>
+  <p> Company: <%= @stock.company_name %> </p>
+  <p> Latest Price: <%= @stock.latest_price %> </p>
+  <p> Market Cap: <%= @stock.market_cap %> </p>
+  <p> P/E Ratio: <%= @stock.pe_ratio %> </p></li>
+
+<% end %>
+</ul>
