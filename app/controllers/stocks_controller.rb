@@ -1,5 +1,5 @@
 class StocksController < ApplicationController
-  before_action :set_stock, only: []
+  before_action :set_stock, only: [:destroy]
   before_action :correct_user, only: []
 
   def index
@@ -11,6 +11,7 @@ class StocksController < ApplicationController
         @error = "That symbol doesn't exist. Search again."
       end
     end
+   # @stock = Stock.new(ticker:)
   end
 
   def show
@@ -28,11 +29,16 @@ class StocksController < ApplicationController
     @user = current_user
     @stock = @user.stocks.new(ticker: ticker)
    # @stock = Stock.new(ticker: StockQuote::Stock.quote(params[:query]), user_id: current_user)
-      if @stock.save!
+      if @stock.save
         redirect_to dashboard_path
       else
         render :index
       end
+  end
+
+  def destroy
+    @stock.destroy
+    redirect_to dashboard_path
   end
 
 private

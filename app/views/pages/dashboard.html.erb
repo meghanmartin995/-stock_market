@@ -3,9 +3,12 @@
   <li> <strong><%= stock.ticker %> </strong>
   <%  @stock = StockQuote::Stock.quote(stock.ticker) %>
   <p> Company: <%= @stock.company_name %> </p>
-  <p> Latest Price: <%= @stock.latest_price %> </p>
-  <p> Market Cap: <%= @stock.market_cap %> </p>
+  <p> Latest Price: $<%= number_with_precision(@stock.latest_price, precision: 2, delimiter: ',') %> </p>
+  <p> Market Cap: <%= number_with_precision(@stock.market_cap, precision: 2, delimiter: ',') %></p>
   <p> P/E Ratio: <%= @stock.pe_ratio %> </p></li>
 
+  <%= link_to "Delete stock", stock_path(stock.id),
+      method: :delete,
+      data: { confirm: "Are you sure you want to delete?" } %>
 <% end %>
 </ul>
