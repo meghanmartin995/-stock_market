@@ -15,6 +15,7 @@ gem 'sassc-rails'
 gem 'simple_form'
 gem 'uglifier'
 gem 'webpacker'
+gem "stock_quote", '~> 3.0.0'
 
 group :development do
   gem 'web-console', '>= 3.3.0'

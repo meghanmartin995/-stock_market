@@ -1,2 +1,17 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<%= form_tag root_path, method: 'POST' do %>
+    <%= text_field_tag 'search', nil, placeholder: "Search by Ticker", size: 50%>
+    <%= submit_tag 'Search' %>
+<% end %>
+
+<% if @stock %>
+   <p>Company: <%= @stock.company_name %> </p>
+   <p> Latest Price: <%= @stock.latest_price %> </p>
+   <p> Market Cap: <%= @stock.market_cap %> </p>
+   <p> P/E Ratio: <%= @stock.pe_ratio %> </p>
+<% end %>
+
+<% if @error %>
+<p><%= @error %></p>
+<% end %>
+
+<a href="https://iexcloud.io">Data provided by IEX Cloud</a>
