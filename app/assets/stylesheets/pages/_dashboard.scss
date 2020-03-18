@@ -1,5 +1,5 @@
 .page-container {
-  margin: 0 15px;
+  margin: 0 15px 30px 15px;
 }
 
 .carousel-cell {
@@ -29,6 +29,7 @@
 }
 .stock-wrapper p {
   margin-bottom: 0;
+  color: white;
 }
 
 .name {
@@ -38,6 +39,10 @@
 .percent {
   font-weight: 600;
   color: #A7FFB0;
+}
+
+.red h6 {
+  color: #FF8080 !important;
 }
 
 .amount {

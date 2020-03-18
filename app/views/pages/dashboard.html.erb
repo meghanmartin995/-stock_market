@@ -35,9 +35,15 @@
         </div>
         <div class="stat3 d-flex">
             <h6>$<%= number_with_precision(@stock.latest_price, precision: 2, delimiter: ',') %> </h6>
-          <div class="percent">
-            <h6 style="margin-right: 6px;"><%= @stock.change_percent.round(2)%>%</h6>
-          </div>
+          <% if  @stock.change_percent.round(2) < 0%>
+            <div class="percent red">
+              <h6 style="margin-right: 6px;"><%= @stock.change_percent.round(2)%>%</h6>
+            </div>
+              <% else  %>
+              <div class="percent">
+              <h6 style="margin-right: 6px;"><%= @stock.change_percent.round(2)%>%</h6>
+            </div>
+          <% end %>
         </div>
          <%#= hidden_field_tag :ticker, value: @stock.symbol %>
 
@@ -56,33 +62,41 @@
     <%  @stock = StockQuote::Stock.quote(stock.ticker) %>
     <p class="name"><%= @stock.company_name %></p>
     <p class="amount">$<%= number_with_precision(@stock.latest_price, precision: 2, delimiter: ',') %></p>
-    <p class="percent"><%= @stock.change_percent.round(2)%>%</p>
+    <% if @stock.change_percent.round(2) < 0%>
+            <div class="percent">
+              <p style="color: #FF8080;"><%= @stock.change_percent.round(2)%>%</p>
+            </div>
+              <% else  %>
+              <div class="percent">
+              <p style="color: #87FFA1;"><%= @stock.change_percent.round(2)%>%</p>
+            </div>
+    <% end %>
   </div>
   <% end %>
 
 
 
 
+ <% end %>
 
 
 
 
-
-  <ul>
-  <% @stocks.each do |stock| %>
-    <li> <strong><%= stock.ticker %> </strong>
-    <%  @stock = StockQuote::Stock.quote(stock.ticker) %>
-    <p> Company: <%= @stock.company_name %> </p>
-     <p> Latest Price: $<%= number_with_precision(@stock.latest_price, precision: 2, delimiter: ',') %> </p>
-      <p> Previous Close: $<%= number_with_precision(@stock.previous_close, precision: 2, delimiter: ',') %> </p>
+  <!-- <ul>
+  <#% @stocks.each do |stock| %>
+    <li> <strong><#%= stock.ticker %> </strong>
+    <#%  @stock = StockQuote::Stock.quote(stock.ticker) %>
+    <p> Company: <#%= @stock.company_name %> </p>
+     <p> Latest Price: $<#%= number_with_precision(@stock.latest_price, precision: 2, delimiter: ',') %> </p>
+      <p> Previous Close: $<#%= number_with_precision(@stock.previous_close, precision: 2, delimiter: ',') %> </p>
       <p> % Change: <%= @stock.change_percent%>% </p>
-      <p> Market Cap: $<%= number_with_precision(@stock.market_cap, precision: 2, delimiter: ',') %></p> </li>
+      <p> Market Cap: $<#%= number_with_precision(@stock.market_cap, precision: 2, delimiter: ',') %></p> </li>
 
-    <%= link_to "Delete stock", stock_path(stock.id),
+    <#%= link_to "Delete stock", stock_path(stock.id),
         method: :delete,
         data: { confirm: "Are you sure you want to delete?" } %>
-  <% end %>
+  <#% end %>
   </ul>
- <% end %>
+ -->
 
 </div>
