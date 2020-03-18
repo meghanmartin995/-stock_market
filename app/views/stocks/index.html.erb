@@ -34,11 +34,11 @@
         <h6>$<%= number_with_precision(@stock.latest_price, precision: 2, delimiter: ',') %> </h6>
       <% if  @stock.change_percent.round(2) < 0%>
             <div class="percent red">
-              <h6><%= @stock.change_percent.round(2)%>%</h6>
+              <h6><%= (@stock.change_percent * 100).round%>%</h6>
             </div>
               <% else  %>
               <div class="percent">
-              <h6><%= @stock.change_percent.round(2)%>%</h6>
+              <h6><%= (@stock.change_percent * 100).round%>%</h6>
             </div>
           <% end %>
     </div>
