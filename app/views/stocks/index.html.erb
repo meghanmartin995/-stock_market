@@ -10,11 +10,11 @@
     </div>
   </div>
 </div>
-
+<% if @stock %>
 
 <div class="result">
   <div class="result-text">
-<% if @stock %>
+
     <div class="stat1 d-flex">
       <h3><%= @stock.company_name %> </h3>
       <p><%= link_to '<i class="fas fa-plus-circle"></i>'.html_safe, stocks_path(:param1 => @stock.symbol), method: :post %></p>
@@ -29,7 +29,7 @@
     <div class="stat3 d-flex">
         <h6>$<%= number_with_precision(@stock.latest_price, precision: 2, delimiter: ',') %> </h6>
       <div class="percent">
-        <h6> 3% <%#= @stock.change_percent%></h6>
+        <h6><%= @stock.change_percent.round(2)%></h6>
       </div>
     </div>
      <%#= hidden_field_tag :ticker, value: @stock.symbol %>
@@ -48,10 +48,11 @@
 
 </div>
 
-
+<% if @stock %>
 <div class="data">
 
   <a href="https://iexcloud.io">Data provided by IEX Cloud</a>
 
 </div>
+<% end %>
 

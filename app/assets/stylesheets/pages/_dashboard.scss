@@ -1,0 +1,28 @@
+.stock-wrapper {
+  background:$lightblue;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 15px 15px;
+  padding: 22px 25px;
+  color: white;
+  box-shadow: 2px 3px 10px rgba(87, 107, 211, 0.43);
+  border-radius: 20px;
+  font-size: 19px;
+}
+.stock-wrapper p {
+  margin-bottom: 0;
+}
+
+.name {
+  font-weight: 600;
+}
+
+.percent {
+  font-weight: 600;
+  color: #A7FFB0;
+}
+
+.amount {
+  font-weight: 300;
+}

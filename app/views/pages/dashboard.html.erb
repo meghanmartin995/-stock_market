@@ -1,3 +1,23 @@
+
+<% @stocks.each do |stock| %>
+<div class="stock-wrapper">
+  <%  @stock = StockQuote::Stock.quote(stock.ticker) %>
+  <p class="name"><%= @stock.company_name %></p>
+  <p class="amount">$<%= number_with_precision(@stock.latest_price, precision: 2, delimiter: ',') %></p>
+  <p class="percent"><%= @stock.change_percent.round(2)%>%</p>
+</div>
+<% end %>
+
+
+
+
+
+
+
+
+
+
+
 <ul>
 <% @stocks.each do |stock| %>
   <li> <strong><%= stock.ticker %> </strong>
