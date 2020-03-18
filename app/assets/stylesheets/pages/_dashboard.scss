@@ -1,9 +1,21 @@
+.page-container {
+  margin: 0 15px;
+}
+
+.heading {
+  font-weight: 600;
+  font-size: 18px;
+  color: $black;
+  margin-top: 20px;
+  margin-left: 4px;
+}
+
 .stock-wrapper {
   background:$lightblue;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 15px 15px;
+  margin: 15px 0;
   padding: 22px 25px;
   color: white;
   box-shadow: 2px 3px 10px rgba(87, 107, 211, 0.43);

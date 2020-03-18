@@ -29,7 +29,7 @@
     <div class="stat3 d-flex">
         <h6>$<%= number_with_precision(@stock.latest_price, precision: 2, delimiter: ',') %> </h6>
       <div class="percent">
-        <h6><%= @stock.change_percent.round(2)%></h6>
+        <h6><%= @stock.change_percent.round(2)%>%</h6>
       </div>
     </div>
      <%#= hidden_field_tag :ticker, value: @stock.symbol %>

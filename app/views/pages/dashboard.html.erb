@@ -1,35 +1,41 @@
+<div class="page-container">
 
-<% @stocks.each do |stock| %>
-<div class="stock-wrapper">
-  <%  @stock = StockQuote::Stock.quote(stock.ticker) %>
-  <p class="name"><%= @stock.company_name %></p>
-  <p class="amount">$<%= number_with_precision(@stock.latest_price, precision: 2, delimiter: ',') %></p>
-  <p class="percent"><%= @stock.change_percent.round(2)%>%</p>
+  <% if @stocks %>
+    <h6 class="heading">All Stocks</h6>
+  <% end %>
+  <% @stocks.each do |stock| %>
+  <div class="stock-wrapper">
+    <%  @stock = StockQuote::Stock.quote(stock.ticker) %>
+    <p class="name"><%= @stock.company_name %></p>
+    <p class="amount">$<%= number_with_precision(@stock.latest_price, precision: 2, delimiter: ',') %></p>
+    <p class="percent"><%= @stock.change_percent.round(2)%>%</p>
+  </div>
+  <% end %>
+
+
+
+
+
+
+
+
+
+
+
+  <ul>
+  <% @stocks.each do |stock| %>
+    <li> <strong><%= stock.ticker %> </strong>
+    <%  @stock = StockQuote::Stock.quote(stock.ticker) %>
+    <p> Company: <%= @stock.company_name %> </p>
+     <p> Latest Price: $<%= number_with_precision(@stock.latest_price, precision: 2, delimiter: ',') %> </p>
+      <p> Previous Close: $<%= number_with_precision(@stock.previous_close, precision: 2, delimiter: ',') %> </p>
+      <p> % Change: <%= @stock.change_percent%>% </p>
+      <p> Market Cap: $<%= number_with_precision(@stock.market_cap, precision: 2, delimiter: ',') %></p> </li>
+
+    <%= link_to "Delete stock", stock_path(stock.id),
+        method: :delete,
+        data: { confirm: "Are you sure you want to delete?" } %>
+  <% end %>
+  </ul>
+
 </div>
-<% end %>
-
-
-
-
-
-
-
-
-
-
-
-<ul>
-<% @stocks.each do |stock| %>
-  <li> <strong><%= stock.ticker %> </strong>
-  <%  @stock = StockQuote::Stock.quote(stock.ticker) %>
-  <p> Company: <%= @stock.company_name %> </p>
-   <p> Latest Price: $<%= number_with_precision(@stock.latest_price, precision: 2, delimiter: ',') %> </p>
-    <p> Previous Close: $<%= number_with_precision(@stock.previous_close, precision: 2, delimiter: ',') %> </p>
-    <p> % Change: <%= @stock.change_percent%>% </p>
-    <p> Market Cap: $<%= number_with_precision(@stock.market_cap, precision: 2, delimiter: ',') %></p> </li>
-
-  <%= link_to "Delete stock", stock_path(stock.id),
-      method: :delete,
-      data: { confirm: "Are you sure you want to delete?" } %>
-<% end %>
-</ul>
