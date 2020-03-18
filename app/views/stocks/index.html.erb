@@ -23,7 +23,8 @@
       <% end %>
       <p><%= link_to '<i class="fas fa-plus-circle"></i>'.html_safe, stocks_path(:param1 => @stock.symbol), method: :post %></p>
     </div>
-     <h4>TECH</h4>
+       <%  company = StockQuote::Stock.company(@stock.symbol) %>
+     <h4><%= company.sector %></h4>
 
     <div class="stat2">
       <h5> Market Cap: $12.1T<%#= number_with_precision(@stock.market_cap, precision: 2, delimiter: ',') %></h5>
@@ -32,6 +33,7 @@
     </div>
     <div class="stat3 d-flex">
         <h6>$<%= number_with_precision(@stock.latest_price, precision: 2, delimiter: ',') %> </h6>
+      <% unless @stock.change_percent.nil? %>
       <% if  @stock.change_percent.round(2) < 0%>
             <div class="percent red">
               <h6><%= (@stock.change_percent * 100).round%>%</h6>
@@ -40,6 +42,7 @@
               <div class="percent">
               <h6><%= (@stock.change_percent * 100).round%>%</h6>
             </div>
+          <% end %>
           <% end %>
     </div>
      <%#= hidden_field_tag :ticker, value: @stock.symbol %>

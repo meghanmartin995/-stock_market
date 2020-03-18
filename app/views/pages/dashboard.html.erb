@@ -26,7 +26,8 @@
           <h3 style="font-size: 26px;"><%= @stock.company_name %> </h3>
 
         </div>
-         <h4 style="margin-top: -4%;">TECH</h4>
+         <%  company = StockQuote::Stock.company(@stock.symbol) %>
+          <h4 style="margin-top: -3%;"><%= company.sector %></h4>
 
         <div class="stat2">
           <h5> Market Cap: $12.1T<%#= number_with_precision(@stock.market_cap, precision: 2, delimiter: ',') %></h5>
@@ -63,7 +64,7 @@
     <%  @stock = StockQuote::Stock.quote(stock.ticker) %>
     <p class="name"><%= @stock.company_name %></p>
     <p class="amount">$<%= number_with_precision(@stock.latest_price, precision: 2, delimiter: ',') %></p>
-    <% if @stock.change_percent.round(1) < 0%>
+    <% if @stock.change_percent.round(2) < 0%>
             <div class="percent">
               <p style="color: #FF8080;"><%= (@stock.change_percent * 100).round %>%</p>
             </div>
