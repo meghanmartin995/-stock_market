@@ -17,7 +17,7 @@
   <div class="main-carousel js-flickity" data-flickity-options='{ "cellAlign": "left", "freeScroll": true, "contain": true}'>
     <% @stocks.each do |stock| %>
     <%  @stock = StockQuote::Stock.quote(stock.ticker) %>
-    <% if @stock.change_percent.round(2) < -0.1 || @stock.change_percent.round(2) > 0.1 %>
+    <% if @stock.change_percent&.round(2) < -0.1 || @stock.change_percent&.round(2) > 0.1 %>
 
     <div class="carousel-cell result">
       <div class="result-text">
