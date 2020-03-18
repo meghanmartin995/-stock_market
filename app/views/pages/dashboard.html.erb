@@ -1,8 +1,56 @@
 <div class="page-container">
 
+   <!--  <div class="main-carousel">
+      <div class="carousel-cell js-flickity" data-flickity-options='{ "cellAlign": "left", "freeScroll": true, "contain": true, "wrapAround": true }'>
+        <img style="width: 100px"src="https://source.unsplash.com/random" alt="">
+      </div>
+      <div class="carousel-cell js-flickity" data-flickity-options='{ "cellAlign": "left", "freeScroll": true, "contain": true, "wrapAround": true }'>
+        <img style="width: 100px"src="https://source.unsplash.com/random" alt="">
+      </div>
+      <div class="carousel-cell js-flickity" data-flickity-options='{ "cellAlign": "left", "freeScroll": true, "contain": true, "wrapAround": true }'>
+        <img style="width: 100px"src="https://source.unsplash.com/random" alt="">
+      </div>
+    </div> -->
+
   <% if @stocks %>
-    <h6 class="heading">All Stocks</h6>
+    <h6 class="heading" style="margin-bottom: -16px; margin-left: 4px; margin-top: 36px;">Highlights</h6>
+  <div class="main-carousel js-flickity" data-flickity-options='{ "cellAlign": "left", "freeScroll": true, "contain": true}'>
+    <% @stocks.each do |stock| %>
+    <%  @stock = StockQuote::Stock.quote(stock.ticker) %>
+    <% if @stock.change_percent.round(2) < -0.1 || @stock.change_percent.round(2) > 0.1 %>
+
+    <div class="carousel-cell result">
+      <div class="result-text">
+
+        <div class="stat1 d-flex">
+          <h3 style="font-size: 26px;"><%= @stock.company_name %> </h3>
+
+        </div>
+         <h4 style="margin-top: -4%;">TECH</h4>
+
+        <div class="stat2">
+          <h5> Market Cap: $12.1T<%#= number_with_precision(@stock.market_cap, precision: 2, delimiter: ',') %></h5>
+
+          <h5> Previous Close: $<%= number_with_precision(@stock.previous_close, precision: 2, delimiter: ',') %> </h5>
+        </div>
+        <div class="stat3 d-flex">
+            <h6>$<%= number_with_precision(@stock.latest_price, precision: 2, delimiter: ',') %> </h6>
+          <div class="percent">
+            <h6 style="margin-right: 6px;"><%= @stock.change_percent.round(2)%>%</h6>
+          </div>
+        </div>
+         <%#= hidden_field_tag :ticker, value: @stock.symbol %>
+
+      </div>
+    </div>
+    <% end %>
   <% end %>
+
+  </div>
+
+
+    <h6 class="heading">All Stocks</h6>
+
   <% @stocks.each do |stock| %>
   <div class="stock-wrapper">
     <%  @stock = StockQuote::Stock.quote(stock.ticker) %>
@@ -11,8 +59,6 @@
     <p class="percent"><%= @stock.change_percent.round(2)%>%</p>
   </div>
   <% end %>
-
-
 
 
 
@@ -37,5 +83,6 @@
         data: { confirm: "Are you sure you want to delete?" } %>
   <% end %>
   </ul>
+ <% end %>
 
 </div>

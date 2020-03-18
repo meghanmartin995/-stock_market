@@ -16,7 +16,7 @@
   <div class="result-text">
 
     <div class="stat1 d-flex">
-      <h3><%= @stock.company_name %> </h3>
+      <h3><%= @stock.company_name.split[0...2].join(' ') %> </h3>
       <p><%= link_to '<i class="fas fa-plus-circle"></i>'.html_safe, stocks_path(:param1 => @stock.symbol), method: :post %></p>
     </div>
      <h4>TECH</h4>
@@ -29,7 +29,7 @@
     <div class="stat3 d-flex">
         <h6>$<%= number_with_precision(@stock.latest_price, precision: 2, delimiter: ',') %> </h6>
       <div class="percent">
-        <h6><%= @stock.change_percent.round(2)%>%</h6>
+        <h6><%= @stock.change_percent.round(2)%></h6>
       </div>
     </div>
      <%#= hidden_field_tag :ticker, value: @stock.symbol %>
