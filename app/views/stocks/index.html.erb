@@ -1,25 +1,48 @@
-<%= form_tag stocks_path, method: 'get' do %>
-    <%= text_field_tag :query, params[:query], placeholder: "Search by Ticker", size: 50%>
-    <%= submit_tag 'Search' %>
+<div class="header-background">
+  <div class="header">
+    <h1>Search company by ticker</h1>
+    <h2>i.e. FB, AAPL, TWTR</h2>
+    <div class="search">
+      <%= form_tag stocks_path, method: 'get' do %>
+        <%= text_field_tag :query, params[:query], placeholder: "search company", size: 30, class: "search"%>
+        <%= submit_tag 'Search', class: "search-button" %>
+      <% end %>
+    </div>
+  </div>
+</div>
 
 
-<% end %>
+<div class="result">
 
 <% if @stock %>
-     <p>Company: <%= @stock.company_name %> </p>
+    <div class="stat1 d-flex">
+      <h3><%= @stock.company_name %> </h3>
+      <p><%= link_to "+", stocks_path(:param1 => @stock.symbol), method: :post %></p>
+    </div>
+     <h4>TECH</h4>
 
-    <p> Latest Price: $<%= number_with_precision(@stock.latest_price, precision: 2, delimiter: ',') %> </p>
-    <p> Previous Close: $<%= number_with_precision(@stock.previous_close, precision: 2, delimiter: ',') %> </p>
-    <p> % Change: <%= @stock.change_percent%>% </p>
-    <p> Market Cap: $<%= number_with_precision(@stock.market_cap, precision: 2, delimiter: ',') %></p>
+    <div class="stat2">
+      <p> Market Cap: $12.1T<%#= number_with_precision(@stock.market_cap, precision: 2, delimiter: ',') %></p>
+
+      <p> Previous Close: $<%= number_with_precision(@stock.previous_close, precision: 2, delimiter: ',') %> </p>
+    </div>
+    <div class="stat3 d-flex">
+      <p> Latest Price: $<%= number_with_precision(@stock.latest_price, precision: 2, delimiter: ',') %> </p>
+      <p> 3% <%#= @stock.change_percent%></p>
+    </div>
      <%#= hidden_field_tag :ticker, value: @stock.symbol %>
 
-     <p><%= link_to "follow this stock", stocks_path(:param1 => @stock.symbol), method: :post  %></p>
-     <a href="https://iexcloud.io">Data provided by IEX Cloud</a>
+
+
 
 <% end %>
+</div>
 
 <% if @error %>
 <p><%= @error %></p>
 <% end %>
+
+
+
+<a href="https://iexcloud.io">Data provided by IEX Cloud</a>
 

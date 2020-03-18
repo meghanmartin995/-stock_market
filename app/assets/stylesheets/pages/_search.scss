@@ -1,0 +1,38 @@
+.header-background {
+  background: #D7DDFF;
+  height: 421px;
+  width: 100%;
+  color: $black;
+  padding-top: 100px;
+  padding-left: 40px;
+  margin-bottom: 12px;
+  padding-right: 30px;
+}
+
+.header-background h1 {
+  font-weight: bold;
+  font-size: 30.3596px;
+  line-height: 37px;
+}
+
+.header-background h2 {
+  font-size: 19.5169px;
+  line-height: 24px;
+  padding-bottom: 12px;
+  font-weight: 300;
+}
+
+
+.result {
+  color: white;
+  background: $blue;
+  height: 305px;
+}
+
+.search {
+  height: 40px;
+  border-radius: 25px;
+}
+.search-button{
+  display: none;
+}
