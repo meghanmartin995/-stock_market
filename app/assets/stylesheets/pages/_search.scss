@@ -1,7 +1,7 @@
- .header-background {
+.header-background {
   background: #D7DDFF;
-  height: 421px;
   width: 100%;
+  height: 380px;
   color: $black;
   padding-top: 100px;
   padding-left: 40px;
@@ -26,7 +26,47 @@
 .result {
   color: white;
   background: $blue;
-  height: 305px;
+  width: 298px;
+  box-shadow: 2.87912px 5.75824px 14.3956px rgba(2, 21, 123, 0.3);
+  border-radius: 7.1978px;
+  margin: 0 auto;
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+
+.result-text {
+  padding-top: 40px;
+  padding-left: 35px;
+  padding-bottom: 20px;
+}
+
+.result-text h3 {
+  font-weight: 600;
+  font-size: 28.7912px;
+  margin-bottom: 0;
+}
+
+.result-text h4{
+  font-size: 20.1538px;
+  margin-top: -8px;
+}
+
+.percent {
+  font-weight: 500 !important;
+  font-size: 28.7912px;
+  color: #87FFA1
+}
+
+.result-text h5 {
+  font-weight: 500;
+  font-size: 18.7143px;
+  line-height: 23px;
+  margin-bottom: 18px;
+}
+
+.result-text h6 {
+  font-size: 28.7912px;
+  font-weight: 300;
 }
 
 .search {
@@ -35,4 +75,25 @@
 }
 .search-button{
   display: none;
+}
+
+.stat3 {
+  justify-content: space-between;
+  margin-right: 25px;
+  margin-top: 50px;
+}
+
+.stat2 {
+  margin-top: 32px;
+}
+
+.data {
+  text-align: center;
+  margin-bottom: 20px;
+  color: $black !important;
+  font-weight: 300;
+}
+
+.error {
+  text-align: center;
 }
