@@ -17,7 +17,7 @@
 <% if @stock %>
     <div class="stat1 d-flex">
       <h3><%= @stock.company_name %> </h3>
-      <p><%= link_to "+", stocks_path(:param1 => @stock.symbol), method: :post %></p>
+      <p><%= link_to '<i class="fas fa-plus-circle"></i>'.html_safe, stocks_path(:param1 => @stock.symbol), method: :post %></p>
     </div>
      <h4>TECH</h4>
 

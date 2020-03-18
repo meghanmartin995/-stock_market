@@ -34,6 +34,10 @@
   margin-bottom: 20px;
 }
 
+.result:hover {
+  opacity: .9;
+}
+
 .result-text {
   padding-top: 40px;
   padding-left: 35px;
@@ -48,7 +52,7 @@
 
 .result-text h4{
   font-size: 20.1538px;
-  margin-top: -8px;
+  margin-top: -23px;
 }
 
 .percent h6 {
@@ -76,6 +80,13 @@
 .search-button{
   display: none;
 }
+
+.fa-plus-circle {
+  color: white;
+  font-size: 40px;
+  margin-left: 20px;
+}
+
 
 .stat3 {
   justify-content: space-between;
