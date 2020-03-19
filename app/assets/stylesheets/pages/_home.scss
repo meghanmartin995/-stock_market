@@ -1,1 +1,25 @@
 // Specific CSS for your home-page
+.background {
+  height: 60vh;
+  background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.28) 0%, rgba(255, 255, 255, 0) 100%), asset-url("background.png")
+}
+
+.background h1 {
+
+}
+
+.background h3{
+
+}
+
+.main-button {
+  background: $lightblue;
+}
+
+.back-text {
+  padding-top: 50px;
+}
+
+.second-button {
+  background: $lightblue;
+}
