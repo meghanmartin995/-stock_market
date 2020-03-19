@@ -44,4 +44,42 @@
   color: white;
   font-weight: 600;
   font-size: 18.0852px;
+  padding: 10px 22px;
+  border-radius: 18.3032px;
+}
+
+.mid-section {
+  height: 288px;
+  background: white;
+  padding: 0 23px;
+}
+
+.mid-section h2 {
+  font-weight: bold;
+  font-size: 18.9882px;
+  color: $black;
+  padding-top: 20px;
+  padding-left: 6px;
+  padding-bottom: 4px;
+}
+
+.bottom-section {
+  background: #020120;
+  height: 284px;
+  color: white;
+  margin-top: 30px;
+}
+
+.bottom-text {
+  padding-top: 40px;
+  padding-right: 20px;
+  padding-left: 132px;
+  text-align: right;
+}
+
+.bottom-section h2 {
+  font-weight: bold;
+  font-size: 21.8047px;
+  line-height: 27px;
+  margin-bottom: 25px;
 }
